@@ -40,7 +40,7 @@ class InstaBot:
     """
 
     url = 'https://www.instagram.com/'
-    url_tag = 'https://www.instagram.com/explore/tags/%s/?__a=1'
+    url_tag = 'https://www.instagram.com/explore/locations/%s/?__a=1'
     url_likes = 'https://www.instagram.com/web/likes/%s/like/'
     url_unlike = 'https://www.instagram.com/web/likes/%s/unlike/'
     url_comment = 'https://www.instagram.com/web/comments/%s/add/'
@@ -329,7 +329,7 @@ class InstaBot:
                     r = self.s.get(url_tag)
                     all_data = json.loads(r.text)
 
-                    self.media_by_tag = list(all_data['tag']['media']['nodes'])
+                    self.media_by_tag = list(all_data['location']['media']['nodes'])
                 except:
                     self.media_by_tag = []
                     self.write_log("Except on get_media!")
